@@ -5,7 +5,6 @@
   <title>Joanovia Urban Boutique – Fashion-forward Filipino Apparel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Joanovia Urban Boutique: Trendy, high-quality, and affordable clothing for Filipinas. Shop dresses, tops, bottoms, accessories, and custom tailoring.">
-  <!-- Corrected favicon path -->
   <link rel="icon" type="image/png" href="images/FAVICON.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -662,7 +661,6 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <div class="nav-logo">
-        <!-- Corrected logo path -->
         <img src="images/LOGO.png" alt="Joanovia Urban Boutique Logo">
         <span class="nav-brand">Joanovia Urban Boutique</span>
       </div>
@@ -692,7 +690,6 @@
   </nav>
   <section class="hero" id="home">
     <div class="hero-logo">
-      <!-- Corrected logo path -->
       <img src="images/LOGO.png" alt="Joanovia Urban Boutique Logo" width="120" height="120">
     </div>
     <div class="hero-title">Welcome to Joanovia Urban Boutique!</div>
@@ -803,7 +800,6 @@
   <footer>
     <div class="footer-main">
       <div class="footer-logo">
-        <!-- Corrected logo path -->
         <img src="images/LOGO.png" alt="Joanovia Urban Boutique Logo">
       </div>
       <div class="footer-brand">Joanovia Urban Boutique</div>
@@ -945,7 +941,8 @@
         return;
       }
       localStorage.setItem('joanovia_cart', JSON.stringify(cart));
-      alert("Order summary coming soon! (This is a demo.)");
+      // Redirect to order summary page
+      window.location.href = "order-summary.html";
     }
     function emptyCart() {
       if(!confirm("Are you sure you want to empty your cart?")) return;
