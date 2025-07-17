@@ -5,7 +5,8 @@
   <title>Joanovia Urban Boutique – Fashion-forward Filipino Apparel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Joanovia Urban Boutique: Trendy, high-quality, and affordable clothing for Filipinas. Shop dresses, tops, bottoms, accessories, and custom tailoring.">
-  <link rel="icon" type="image/png" href="FAVICON.png">
+  <!-- Corrected favicon path -->
+  <link rel="icon" type="image/png" href="images/FAVICON.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -649,15 +650,11 @@
       .hero-logo { margin-top: 16px; margin-bottom: 8px; }
       .footer-main { font-size: .92em; }
       .product-grid, .features-grid { grid-template-columns: 1fr; }
+      .nav-brand { display: none; }
     }
     @media (max-width: 500px) {
       .product-card, .feature-card { min-height: 120px; }
       .about-section, .features-section, .products-section, .cart-section, .legal-section, .contact-section { padding: 5px 1vw 4px 1vw;}
-    }
-    @media (max-width: 600px) {
-      .nav-brand {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -665,7 +662,8 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <div class="nav-logo">
-        <img src="LOGO.png" alt="Joanovia Urban Boutique Logo">
+        <!-- Corrected logo path -->
+        <img src="images/LOGO.png" alt="Joanovia Urban Boutique Logo">
         <span class="nav-brand">Joanovia Urban Boutique</span>
       </div>
       <div class="nav-links" id="nav-links">
@@ -697,7 +695,8 @@
   </nav>
   <section class="hero" id="home">
     <div class="hero-logo">
-      <img src="LOGO.png" alt="Joanovia Urban Boutique Logo" width="120" height="120">
+      <!-- Corrected logo path -->
+      <img src="images/LOGO.png" alt="Joanovia Urban Boutique Logo" width="120" height="120">
     </div>
     <div class="hero-title">Welcome to Joanovia Urban Boutique!</div>
     <div class="hero-subtitle">
@@ -807,7 +806,8 @@
   <footer>
     <div class="footer-main">
       <div class="footer-logo">
-        <img src="LOGO.png" alt="Joanovia Urban Boutique Logo">
+        <!-- Corrected logo path -->
+        <img src="images/LOGO.png" alt="Joanovia Urban Boutique Logo">
       </div>
       <div class="footer-brand">Joanovia Urban Boutique</div>
       <div class="footer-contact">
@@ -866,14 +866,14 @@
     function randQty() { return Math.floor(Math.random()*10)+6; }
     function randPrice(base) { return base+Math.floor(Math.random()*200); }
     const products = [
-      { name: "Casual Midi Dress", price: randPrice(799), qty: randQty(), img: "PRODUCT-1.png" },
-      { name: "Chic Blouse", price: randPrice(499), qty: randQty(), img: "PRODUCT-2.png" },
-      { name: "Paper Bag Pants", price: randPrice(599), qty: randQty(), img: "PRODUCT-3.png" },
-      { name: "Classic Cardigan", price: randPrice(649), qty: randQty(), img: "PRODUCT-4.png" },
-      { name: "Statement Sling Bag", price: randPrice(399), qty: randQty(), img: "PRODUCT-5.png" },
-      { name: "Layered Necklace", price: randPrice(259), qty: randQty(), img: "PRODUCT-6.png" },
-      { name: "Tailored Dress (Custom)", price: randPrice(1200), qty: randQty(), img: "PRODUCT-7.png" },
-      { name: "Trendy Shorts", price: randPrice(349), qty: randQty(), img: "PRODUCT-8.png" }
+      { name: "Casual Midi Dress", price: randPrice(799), qty: randQty(), img: "images/PRODUCT-1.png" },
+      { name: "Chic Blouse", price: randPrice(499), qty: randQty(), img: "images/PRODUCT-2.png" },
+      { name: "Paper Bag Pants", price: randPrice(599), qty: randQty(), img: "images/PRODUCT-3.png" },
+      { name: "Classic Cardigan", price: randPrice(649), qty: randQty(), img: "images/PRODUCT-4.png" },
+      { name: "Statement Sling Bag", price: randPrice(399), qty: randQty(), img: "images/PRODUCT-5.png" },
+      { name: "Layered Necklace", price: randPrice(259), qty: randQty(), img: "images/PRODUCT-6.png" },
+      { name: "Tailored Dress (Custom)", price: randPrice(1200), qty: randQty(), img: "images/PRODUCT-7.png" },
+      { name: "Trendy Shorts", price: randPrice(349), qty: randQty(), img: "images/PRODUCT-8.png" }
     ];
     let cart = [];
     function renderProducts() {
