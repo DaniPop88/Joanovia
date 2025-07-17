@@ -654,6 +654,11 @@
       .product-card, .feature-card { min-height: 120px; }
       .about-section, .features-section, .products-section, .cart-section, .legal-section, .contact-section { padding: 5px 1vw 4px 1vw;}
     }
+    @media (max-width: 600px) {
+      .nav-brand {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -669,9 +674,6 @@
         <a href="#collections">Collections</a>
         <a href="#cart">Cart</a>
         <a href="#contact">Contact</a>
-        <a href="#privacy-policy">Privacy</a>
-        <a href="#terms">Terms</a>
-        <a href="#return-policy">Returns</a>
       </div>
       <button class="nav-burger" aria-label="Open Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
