@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Joanovia Urban Boutique – Fashion-forward Filipino Apparel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Joanovia Urban Boutique: Trendy, high-quality, and affordable clothing for Filipinas. Shop dresses, tops, bottoms, accessories, and custom tailoring.">
+  <link rel="icon" type="image/png" href="FAVICON.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #e71c94;
+      --primary-dark: #1d1d1e;
+      --primary-light: #fff0fa;
+      --accent: #ffb33a;
+      --text: #2c2c2c;
+      --bg: #fff;
+      --section: #f9f3fc;
+      --white: #fff;
+      --border: #eecff5;
+      --radius: 18px;
+      --shadow: 0 6px 32px rgba(231,28,148,0.08);
+      --max-width: 1120px;
+      --nav-height: 68px;
+      --transition: .2s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Nunito', 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background .2s;
+    }
+    .navbar {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      height: var(--nav-height);
+      width: 100vw;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+    .navbar-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+    .nav-logo img {
+      height: 46px;
+      width: 46px;
+      border-radius: 13px;
+      border: 2.5px solid var(--primary);
+      background: var(--white);
+      box-shadow: 0 2px 8px #e71c9416;
+      object-fit: cover;
+    }
+    .nav-brand {
+      font-size: 1.2em;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: .02em;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      font-weight: 600;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 2.5px solid transparent;
+      font-family: 'Nunito', Arial, sans-serif;
+      transition: color var(--transition), border var(--transition);
+      font-size: 1.08em;
+    }
+    .nav-links a:hover, .nav-links a:focus {
+      color: var(--primary);
+      border-bottom: 2.5px solid var(--primary);
+    }
+    .nav-cart-btn {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 8px 22px 8px 16px;
+      font-size: 1em;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 4px 16px #e71c9420;
+      font-family: 'Nunito', Arial, sans-serif;
+      transition: background var(--transition);
+    }
+    .nav-cart-btn .cart-qty {
+      background: var(--white);
+      color: var(--primary);
+      border-radius: 100px;
+      font-size: 0.97em;
+      font-weight: 700;
+      padding: 1px 10px;
+      margin-left: 2px;
+    }
+    .nav-burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 7px;
+      margin-left: 13px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .mobile-menu-bg {
+      display: none;
+      position: fixed;
+      top: var(--nav-height); left: 0; right: 0; bottom: 0;
+      background: #e71c94bb;
+      z-index: 1100;
+      opacity: 1;
+    }
+    .mobile-menu-bg.show { display: block; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height); left: 0; right: 0;
+      background: var(--white);
+      flex-direction: column;
+      border-radius: 0 0 15px 15px;
+      z-index: 1200;
+      align-items: flex-start;
+      width: 100vw;
+      justify-content: flex-start;
+      box-shadow: 0 4px 24px #e71c9411;
+    }
+    .mobile-menu.show { display: flex; }
+    .mobile-menu a {
+      width: 100vw; text-align: left;
+      padding: 20px 0 20px 30px;
+      border-bottom: 1px solid var(--border);
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.09em;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a:focus {
+      color: var(--accent);
+      background: #fcf0fb;
+    }
+    .hero {
+      min-height: 500px;
+      width: 100%;
+      background: linear-gradient(112deg, var(--primary) 56%, var(--accent) 100%);
+      padding-top: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-logo {
+      margin-bottom: 20px;
+      margin-top: 56px;
+    }
+    .hero-logo img {
+      height: 120px;
+      width: 120px;
+      border-radius: 25px;
+      border: 5px solid var(--white);
+      object-fit: cover;
+      background: var(--white);
+      box-shadow: 0 6px 32px #e71c9422;
+    }
+    .hero-title {
+      font-size: 2.65em;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+      text-shadow: 3px 4px 14px #e71c9490;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .hero-subtitle {
+      font-size: 1.25em;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-shadow: 1px 2px 10px #e71c9466;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .hero-cta {
+      background: var(--white);
+      color: var(--primary);
+      border-radius: 100px;
+      font-weight: 800;
+      font-size: 1.09em;
+      padding: 15px 36px;
+      box-shadow: 0 4px 18px #fff4;
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      transition: background var(--transition), color var(--transition);
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .hero-cta:hover, .hero-cta:focus {
+      background: var(--primary);
+      color: var(--white);
+    }
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 3vw 36px 3vw;
+      margin-top: -40px;
+    }
+    .about-section {
+      background: var(--section);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 48px auto 0 auto;
+      padding: 48px 36px 38px 36px;
+      max-width: 810px;
+      border: 1.5px solid var(--border);
+      text-align: center;
+    }
+    .about-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1.21em;
+      color: var(--primary);
+      margin: 0 0 22px 0;
+      letter-spacing: .015em;
+    }
+    .about-body {
+      color: var(--text);
+      font-size: 1.14em;
+      font-weight: 400;
+      margin: 0 auto 13px auto;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 99%;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .about-list {
+      text-align: left;
+      margin: 25px auto 0 auto;
+      max-width: 88%;
+      font-size: 1em;
+      color: var(--primary);
+      padding-left: 1.2em;
+    }
+    .about-list li { margin-bottom: 10px; }
+    .features-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 48px auto 0 auto;
+      padding: 40px 28px 28px 28px;
+      max-width: 1100px;
+      border: 1.5px solid var(--border);
+      text-align: center;
+    }
+    .features-title {
+      font-size: 1.18em;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 19px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 35px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+    .feature-card {
+      background: var(--primary-light);
+      border-radius: 14px;
+      box-shadow: 0 2px 16px #e71c9407;
+      padding: 26px 12px 18px 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 110px;
+      max-width: 325px;
+      margin: 0 auto;
+    }
+    .feature-icon {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+    .feature-title {
+      font-size:1.10em; font-weight:700; color:var(--accent); margin-bottom:10px; letter-spacing:.01em;
+      font-family: 'Montserrat', Arial, sans-serif;
+      text-align: center;
+    }
+    .feature-desc {
+      font-size: .97em;
+      color: var(--text);
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .products-section {
+      background: var(--section);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 48px auto 0 auto;
+      padding: 40px 28px 28px 28px;
+      max-width: 1100px;
+      border: 1.5px solid var(--border);
+      text-align: center;
+    }
+    .products-title {
+      font-size: 1.18em;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 22px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 30px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 18px #e71c9410;
+      padding: 25px 12px 16px 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 230px;
+      max-width: 330px;
+      margin: 0 auto;
+      transition: box-shadow var(--transition);
+    }
+    .product-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 11px;
+      background: var(--border);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-size: 2em;
+      color: var(--primary);
+    }
+    .product-img img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 11px;
+      border: 1px solid #eecff5;
+      background: #fff;
+      display: block;
+    }
+    .product-name {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.08em;
+      margin-bottom: 8px;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .product-price {
+      color: var(--accent);
+      font-size: 1.04em;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+    .product-stock {
+      font-size: .98em;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .add-cart-btn {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 9px 22px;
+      font-size: .97em;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: auto;
+      transition: background var(--transition);
+      box-shadow: 0 2px 9px #e71c9411;
+      outline: none;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .add-cart-btn:disabled { opacity: .55; cursor: not-allowed; }
+    .cart-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 48px auto 0 auto;
+      padding: 34px 22px 22px 22px;
+      max-width: 800px;
+      border: 1.5px solid var(--border);
+      text-align: center;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .cart-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1.15em;
+      color: var(--primary);
+      margin-bottom: 18px;
+      letter-spacing: .015em;
+    }
+    .cart-content { margin-bottom: 13px; }
+    .cart-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+      text-align: left;
+      font-size: 1em;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .cart-list li {
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-list img {
+      width:28px;
+      height:28px;
+      vertical-align:middle;
+      border-radius:6px;
+      border:1px solid #eecff5;
+      margin-right:7px;
+      background:#fff;
+      object-fit:cover;
+    }
+    .cart-total {
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 8px;
+      margin-bottom: 7px;
+      font-size: 1.03em;
+    }
+    .cart-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 5px;
+    }
+    .cart-action-btn {
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      border: none;
+      border-radius: 100px;
+      font-size: .96em;
+      padding: 9px 20px;
+      cursor: pointer;
+      transition: background var(--transition);
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .cart-action-btn:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    .legal-section {
+      background: var(--section);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 32px auto 0 auto;
+      padding: 18px 17px 11px 17px;
+      max-width: 700px;
+      border: 1.5px solid var(--border);
+      text-align: left;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .legal-title {
+      font-size: 1.10em;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-align: left;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .legal-content {
+      color: var(--text);
+      font-size: 1.03em;
+      margin-bottom: 0;
+      min-height: 32px;
+      opacity: .70;
+      font-style: italic;
+    }
+    .legal-content ul {
+      margin: 0 0 0 21px;
+      padding: 0;
+    }
+    .legal-content li {
+      margin-bottom: 7px;
+    }
+    .contact-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 32px auto 0 auto;
+      padding: 17px 16px 12px 16px;
+      max-width: 700px;
+      border: 1.5px solid var(--border);
+      text-align: left;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .contact-title {
+      font-size: 1.12em;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 12px;
+      text-align: left;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .contact-list {
+      display: inline-block; text-align: left;
+      margin: 0 auto 8px auto; font-size: 1em; line-height: 1.7;
+      color: var(--text); max-width: 98%;
+      padding-left: 1.1em;
+    }
+    .contact-list strong { color: var(--primary);}
+    footer {
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 41px 8px 25px 8px;
+      margin-top: 50px;
+      font-size: 1.06em;
+      font-family: 'Montserrat', Arial, sans-serif;
+      border-top: 3px solid var(--primary);
+    }
+    .footer-main {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .footer-logo img {
+      height: 38px;
+      width: 38px;
+      border-radius: 9px;
+      border: 2px solid var(--primary);
+      object-fit: cover;
+      margin-bottom: 6px;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.10em;
+      color: var(--primary);
+      margin-bottom: 7px;
+      letter-spacing: .02em;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .footer-contact {
+      margin-bottom: 15px;
+      color: var(--white);
+      font-size: 1em;
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .footer-contact a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color var(--transition);
+    }
+    .footer-contact a:hover {
+      color: var(--white);
+    }
+    .footer-links {
+      margin-top: 11px;
+      font-size: 1em;
+      color: var(--white);
+      font-family: 'Nunito', Arial, sans-serif;
+    }
+    .footer-links a {
+      color: var(--primary);
+      margin: 0 7px;
+      text-decoration: underline;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .footer-copy {
+      color: #eecff5;
+      font-size: 0.97em;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+    @media (max-width: 980px) {
+      .navbar-inner { padding: 0 8px; }
+      main { padding: 0 1vw 18px 1vw; }
+      .about-section, .features-section, .products-section, .cart-section, .legal-section, .contact-section { padding: 14px 5px 10px 5px; }
+      .product-grid, .features-grid { gap: 16px; }
+    }
+    @media (max-width: 700px) {
+      .navbar { height: 54px; }
+      .navbar-inner { height: 54px; }
+      .hero-logo img { height: 75px; width: 75px; }
+      .hero-title { font-size: 1.22em; }
+      .about-section, .features-section, .products-section, .cart-section, .legal-section, .contact-section { padding: 8px 2vw 6px 2vw; }
+      .footer-main { font-size: .96em; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .navbar-inner { flex-direction: row; }
+      .about-section, .features-section, .products-section, .cart-section, .legal-section, .contact-section { max-width: 99vw; }
+      .hero-logo { margin-top: 16px; margin-bottom: 8px; }
+      .footer-main { font-size: .92em; }
+      .product-grid, .features-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .product-card, .feature-card { min-height: 120px; }
+      .about-section, .features-section, .products-section, .cart-section, .legal-section, .contact-section { padding: 5px 1vw 4px 1vw;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <div class="nav-logo">
+        <img src="LOGO.png" alt="Joanovia Urban Boutique Logo">
+        <span class="nav-brand">Joanovia Urban Boutique</span>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#collections">Collections</a>
+        <a href="#cart">Cart</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy-policy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#return-policy">Returns</a>
+      </div>
+      <button class="nav-burger" aria-label="Open Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="nav-cart-btn" onclick="scrollToSection('cart')" aria-label="View Cart">
+        <span>🛍️</span> Cart <span class="cart-qty" id="cartQty">0</span>
+      </button>
+    </div>
+    <div class="mobile-menu-bg" id="mobileMenuBg"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" onclick="closeMobileMenu()">Home</a>
+      <a href="#about" onclick="closeMobileMenu()">About</a>
+      <a href="#why-us" onclick="closeMobileMenu()">Why Us</a>
+      <a href="#collections" onclick="closeMobileMenu()">Collections</a>
+      <a href="#cart" onclick="closeMobileMenu()">Cart</a>
+      <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+      <a href="#privacy-policy" onclick="closeMobileMenu()">Privacy</a>
+      <a href="#terms" onclick="closeMobileMenu()">Terms</a>
+      <a href="#return-policy" onclick="closeMobileMenu()">Returns</a>
+    </div>
+  </nav>
+  <section class="hero" id="home">
+    <div class="hero-logo">
+      <img src="LOGO.png" alt="Joanovia Urban Boutique Logo" width="120" height="120">
+    </div>
+    <div class="hero-title">Welcome to Joanovia Urban Boutique!</div>
+    <div class="hero-subtitle">
+      Trendy, high-quality, and affordable clothing for Filipinas.<br>
+      <span style="font-size:.92em; font-weight:400;">"Sulit na sulit ang bawat bili! Para sa inyong convenience, nandito kami!"</span>
+    </div>
+    <a href="#collections" class="hero-cta">Shop the Collection</a>
+  </section>
+  <main>
+    <section class="about-section" id="about">
+      <div class="about-title">ABOUT JOANOVIA URBAN BOUTIQUE</div>
+      <div class="about-body">
+        <b>Joanovia Urban Boutique</b> is a proudly Filipino-owned boutique based in <strong>Quezon City, NCR</strong>. We specialize in providing fashionable, high-quality apparel and accessories designed for the modern Filipina.<br><br>
+        From <b>street style</b> to elegant <b>evening wear</b>, our curated selection is perfect for any occasion. Whether you need a chic look for a night out or a comfy dress for daily wear, we have you covered.<br><br>
+        <b>Our Mission:</b> To empower and inspire every customer to express their individuality through fashion.<br>
+        <b>Business Registration:</b> Registered with the Philippine DTI.<br>
+        <b>VAT Number:</b> 456-789-123<br>
+        <ul class="about-list">
+          <li><b>Mahal kami ng mga customer!</b> (Our customers love us!)</li>
+          <li><b>Personalized Styling:</b> Receive expert advice and find your perfect fit.</li>
+          <li><b>Experience the difference:</b> Sulit na sulit ang bawat bili!</li>
+        </ul>
+      </div>
+    </section>
+    <section class="features-section" id="why-us">
+      <div class="features-title">WHY SHOP WITH JOANOVIA?</div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👗</div>
+          <div class="feature-title">Trendy & Affordable</div>
+          <div class="feature-desc">Stay updated with the latest fashion trends, all within your budget.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">Quality Fabrics</div>
+          <div class="feature-desc">Enjoy comfort and durability with every purchase—gawa sa puso, gawa para sa'yo!</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <div class="feature-title">Custom Tailoring</div>
+          <div class="feature-desc">We offer tailoring for the perfect fit, unique to you.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title">Personalized Service</div>
+          <div class="feature-desc">Our team is here for your styling needs. Para sa inyong convenience, nandito kami!</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👜</div>
+          <div class="feature-title">Exclusive Collections</div>
+          <div class="feature-desc">Find unique pieces curated just for Joanovia customers.</div>
+        </div>
+      </div>
+    </section>
+    <section class="products-section" id="collections">
+      <div class="products-title">OUR COLLECTIONS</div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+    <section class="cart-section" id="cart">
+      <div class="cart-title">Your Cart</div>
+      <div class="cart-content" id="cartContent">
+        <div style="opacity:.65;">Your cart is empty.</div>
+      </div>
+      <div class="cart-total" id="cartTotal"></div>
+      <div class="cart-actions">
+        <button class="cart-action-btn" onclick="checkout()">Checkout</button>
+        <button class="cart-action-btn" onclick="emptyCart()">Empty Cart</button>
+      </div>
+    </section>
+    <section class="contact-section" id="contact">
+      <div class="contact-title">Get in Touch with Us</div>
+      <ul class="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:contact@joanoviaurbanboutique.com">contact@joanoviaurbanboutique.com</a></li>
+        <li><strong>Phone:</strong> +63 915 213 6984</li>
+        <li><strong>Address:</strong> Unit 4, #82 Banaba Street, Barangay Commonwealth,<br>Quezon City, NCR, Philippines</li>
+        <li><strong>Business Hours:</strong> Monday–Saturday: 10:00 AM – 7:00 PM | Sunday: Closed</li>
+        <li><strong>Delivery:</strong> We offer delivery services. Contact us for more info.</li>
+      </ul>
+    </section>
+    <section class="legal-section" id="privacy-policy">
+      <div class="legal-title">Privacy Policy</div>
+      <div class="legal-content">
+        We collect only necessary information to process orders and provide the best service. Your data is safe and never shared except for fulfillment purposes. For more details, contact us anytime.
+      </div>
+    </section>
+    <section class="legal-section" id="terms">
+      <div class="legal-title">Terms of Service</div>
+      <div class="legal-content">
+        <ul>
+          <li>All sales are subject to availability and confirmation.</li>
+          <li>Prices and offers may change at any time without notice.</li>
+          <li>By using this site, you agree to our policies and Philippine law.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="legal-section" id="return-policy">
+      <div class="legal-title">Return & Exchange Policy</div>
+      <div class="legal-content">
+        <ul>
+          <li>Returns/exchanges allowed within 7 days for unused items with original tags.</li>
+          <li>Refunds processed within 5 business days after approval.</li>
+          <li>Return shipping fee may apply unless item is defective or incorrect.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo">
+        <img src="LOGO.png" alt="Joanovia Urban Boutique Logo">
+      </div>
+      <div class="footer-brand">Joanovia Urban Boutique</div>
+      <div class="footer-contact">
+        Unit 4, #82 Banaba Street, Barangay Commonwealth, Quezon City, NCR, Philippines<br>
+        <b>Phone:</b> +63 915 213 6984 | <b>Email:</b> <a href="mailto:contact@joanoviaurbanboutique.com">contact@joanoviaurbanboutique.com</a>
+      </div>
+      <div class="footer-links">
+        <a href="#privacy-policy">Privacy Policy</a>|
+        <a href="#terms">Terms</a>|
+        <a href="#return-policy">Returns</a>|
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2025 Joanovia Urban Boutique. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+      document.getElementById('mobileMenuBg').classList.toggle('show');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('show');
+      document.getElementById('mobileMenuBg').classList.remove('show');
+    }
+    window.addEventListener('resize', function() {
+      if(window.innerWidth > 600) closeMobileMenu();
+    });
+    document.addEventListener('click', function(e) {
+      var mm = document.getElementById('mobileMenu');
+      var bg = document.getElementById('mobileMenuBg');
+      var burger = document.querySelector('.nav-burger');
+      if(mm.classList.contains('show') && !mm.contains(e.target) && !burger.contains(e.target) && !bg.contains(e.target)) closeMobileMenu();
+    });
+    function scrollToSection(id) {
+      var target = document.getElementById(id);
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.mobile-menu a').forEach(function(link){
+        link.addEventListener('click', function(e){
+          var targetId = link.getAttribute('href').replace('#','');
+          var target = document.getElementById(targetId);
+          if(target) target.scrollIntoView({behavior:'smooth'});
+        });
+      });
+      document.querySelectorAll('.nav-links a').forEach(function(link){
+        link.addEventListener('click', function(e){
+          var targetId = link.getAttribute('href').replace('#','');
+          var target = document.getElementById(targetId);
+          if(target) target.scrollIntoView({behavior:'smooth'});
+        });
+      });
+    });
+    function randQty() { return Math.floor(Math.random()*10)+6; }
+    function randPrice(base) { return base+Math.floor(Math.random()*200); }
+    const products = [
+      { name: "Casual Midi Dress", price: randPrice(799), qty: randQty(), img: "PRODUCT-1.png" },
+      { name: "Chic Blouse", price: randPrice(499), qty: randQty(), img: "PRODUCT-2.png" },
+      { name: "Paper Bag Pants", price: randPrice(599), qty: randQty(), img: "PRODUCT-3.png" },
+      { name: "Classic Cardigan", price: randPrice(649), qty: randQty(), img: "PRODUCT-4.png" },
+      { name: "Statement Sling Bag", price: randPrice(399), qty: randQty(), img: "PRODUCT-5.png" },
+      { name: "Layered Necklace", price: randPrice(259), qty: randQty(), img: "PRODUCT-6.png" },
+      { name: "Tailored Dress (Custom)", price: randPrice(1200), qty: randQty(), img: "PRODUCT-7.png" },
+      { name: "Trendy Shorts", price: randPrice(349), qty: randQty(), img: "PRODUCT-8.png" }
+    ];
+    let cart = [];
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      products.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-img">
+            <img src="${item.img}" alt="${item.name}">
+          </div>
+          <div class="product-name">${item.name}</div>
+          <div class="product-price">₱${item.price.toLocaleString()}</div>
+          <div class="product-stock">Stock: ${item.qty}</div>
+          <button class="add-cart-btn" onclick="addToCart(${idx})" ${item.qty === 0?'disabled':''}>Add to Cart</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+    function addToCart(idx) {
+      let prod = products[idx];
+      if(prod.qty < 1) return alert("Out of stock!");
+      let existing = cart.find(item => item.name === prod.name);
+      if(existing) {
+        if(existing.qty < prod.qty) existing.qty++;
+        else return alert("No more stock available!");
+      } else {
+        cart.push({
+          name: prod.name,
+          price: prod.price,
+          qty: 1,
+          stock: prod.qty,
+          img: prod.img
+        });
+      }
+      updateCart();
+    }
+    function updateCart() {
+      let totalCount = 0, totalAmount = 0;
+      cart.forEach(item => { totalCount += item.qty; totalAmount += item.price*item.qty; });
+      document.getElementById('cartQty').textContent = totalCount;
+      const cartContent = document.getElementById('cartContent');
+      if(cart.length === 0) {
+        cartContent.innerHTML = '<div style="opacity:.65;">Your cart is empty.</div>';
+        document.getElementById('cartTotal').textContent = '';
+      } else {
+        let html = '<ul class="cart-list">';
+        cart.forEach((item, idx) => {
+          html += `<li>
+            <span>
+              <img src="${item.img}" alt="${item.name}">
+              ${item.name} × ${item.qty}
+            </span>
+            <span style="color:var(--primary);font-weight:700;">₱${(item.price*item.qty).toLocaleString()}</span>
+            <button class="add-cart-btn" style="background:var(--accent);color:var(--primary-dark);padding:3px 11px 3px 11px;font-size:1em;" onclick="removeCartItem(${idx})" aria-label="Remove ${item.name} from cart">&times;</button>
+          </li>`;
+        });
+        html += `</ul>`;
+        cartContent.innerHTML = html;
+        document.getElementById('cartTotal').textContent = `Grand Total: ₱${totalAmount.toLocaleString()}`;
+      }
+      localStorage.setItem('joanovia_cart', JSON.stringify(cart));
+    }
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      updateCart();
+    }
+    function checkout() {
+      if(cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      localStorage.setItem('joanovia_cart', JSON.stringify(cart));
+      alert("Order summary coming soon! (This is a demo.)");
+    }
+    function emptyCart() {
+      if(!confirm("Are you sure you want to empty your cart?")) return;
+      cart = [];
+      updateCart();
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+      renderProducts();
+      const savedCart = localStorage.getItem('joanovia_cart');
+      if(savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCart();
+      }
+    });
+  </script>
+</body>
+</html>
